@@ -1,0 +1,117 @@
+﻿@model IEnumerable<DoctorViewModel>
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h1>Search Doctor Based on Required Specialization</h1>
+<div class="row">
+    <div class="col-md-11">
+        <div class="row">
+            <div class="col">
+                <form asp-controller="Doctors" asp-action="Search" method="get">
+                    <h4>
+                        Our  Specializations <br />
+                                             <br />
+                    </h4>
+                    <h8>
+                        ENT <br />
+                        Cardiology <br />
+                        General Checkup <br />
+                        Neurology <br />
+                        Orthopedics <br />
+                        Dermatology <br />
+                    </h8>
+
+                    
+                    <input type="text" name="specialization" />
+                    <button type="submit" value="Submit">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            @if (Model != null)
+            {
+                @if (Model.Count() > 0)
+                {
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Doctor Name</th>
+                                <th>Specialization Name</th>
+                                <th>Experience</th>
+                                <th>Qualification</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.DoctorName</td>
+                                    <td>@item.SpecializationName</td>
+                                    <td>@item.Experience</td>
+                                    <td>@item.Qualification</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <label>No Data found!</label>
+                }
+            }
+        </div>
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+@*<div class="row">
+    <div class="col-md-6">
+
+        <form asp-controller="Doctors" asp-action="Search" method="get">
+            <input type="text" name="specialization" />
+            <button type="submit" value="Submit">Submit</button>
+        </form>
+        @if (Model != null)
+        {
+            @if (Model.Count() > 0)
+            {
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Doctor Name</th>
+                <th>Specialization Name</th>
+                <th>Experience</th>
+                <th>Qualification</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.DoctorName</td>
+                    <td>@item.SpecializationName</td>
+                    <td>@item.Experience</td>
+                    <td>@item.Qualification</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+            }
+            else
+            {
+                <label>No Data found!</label>
+            }
+        }
+    </div>
+</div>*@

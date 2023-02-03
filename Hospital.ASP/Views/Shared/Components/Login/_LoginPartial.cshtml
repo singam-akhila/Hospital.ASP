@@ -1,0 +1,19 @@
+﻿@using Microsoft.AspNetCore.Http;
+
+@{
+    var isValid = Context.Session.GetString("token");
+}
+
+@if (isValid != null)
+{
+    <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+            <a asp-controller="" asp-action="" class="nav-link">Welcome, @ViewBag.Name</a>
+        </li>
+        <li class="nav-item">
+            <form asp-controller="Account" asp-action="LogOut" method="post">
+                <input type="submit" class=" btn btn-link nav-link" value="Sign Out"/>
+            </form>
+        </li>
+    </ul>
+}
